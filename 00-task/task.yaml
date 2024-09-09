@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: hello
+spec:
+  steps:
+    - name: echo-hello
+      image: alpine
+      script: | 
+        echo "Hello"
+    - name: echo-world
+      image: alpine
+      script: |
+        for n in $(seq 10);
+        do
+        echo $(date) $n; 
+        sleep $n
+        done
